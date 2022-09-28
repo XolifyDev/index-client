@@ -1,9 +1,17 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-import './App.css';
+import { LandingPage, UserSitesPage } from './pages';
 
-function App() {
-	return null;
-}
+const App = () => {
+	return (
+		<BrowserRouter>
+			<Switch>
+				<Route path='/' component={LandingPage} exact />
+
+				<Route path='/sites' component={UserSitesPage} />
+			</Switch>
+		</BrowserRouter>
+	);
+};
 
 export default App;
