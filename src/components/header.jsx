@@ -1,10 +1,16 @@
 import { Button } from 'react-bootstrap';
 
+import Banner from '../assets/banner.png';
+
+const ButtonHex = 'rgb(38, 40, 43)';
+
 export const Header = () => (
 	<div
 		style={{
-			backgroundColor: 'black',
-			height: '45vh',
+			backgroundImage: `url(${Banner})`,
+			backgroundSize: 'cover',
+			backgroundRepeat: 'none',
+			height: '35vh',
 			width: '100%',
 			display: 'flex',
 			alignItems: 'center',
@@ -13,14 +19,47 @@ export const Header = () => (
 		}}
 	>
 		<div style={{ textAlign: 'center' }}>
-			<h1>FiveM Designs</h1>
+			<img
+				src='/logo.png'
+				style={{
+					height: '15vh',
+					paddingBottom: '2vh',
+				}}
+			/>
+
+			<h1 className='h3'>FiveM Designs</h1>
+
+			<p
+				style={{
+					fontWeight: '700',
+					marginBottom: '0',
+					paddingBottom: '0',
+				}}
+			>
+				FiveM Based website Templates & Hosting.
+			</p>
 
 			<div style={{ marginTop: '1vh' }}>
-				<Button style={{ fontWeight: '700', margin: '5px' }}>
+				<Button
+					style={{
+						fontWeight: '700',
+						margin: '5px',
+						backgroundColor: ButtonHex,
+						borderColor: ButtonHex,
+					}}
+				>
 					View Templates
 				</Button>
 
-				<Button style={{ fontWeight: '700', margin: '5px' }}>
+				<Button
+					style={{
+						fontWeight: '700',
+						margin: '5px',
+						backgroundColor: ButtonHex,
+						borderColor: ButtonHex,
+					}}
+					href='/discord'
+				>
 					Support Discord
 				</Button>
 			</div>

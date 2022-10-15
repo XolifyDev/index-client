@@ -6,9 +6,20 @@ const App = () => {
 	return (
 		<BrowserRouter>
 			<Switch>
-				<Route path='/' component={LandingPage} exact />
+				<Route path='/' exact={true} component={LandingPage} />
 
-				<Route path='/sites' component={UserSitesPage} />
+				<Route path='/sites' exact={true} component={UserSitesPage} />
+
+				<Route
+					path='/discord'
+					exact={true}
+					component={() => {
+						window.location.href =
+							process.env.REACT_APP_DISCORD_INVITE;
+
+						return null;
+					}}
+				/>
 			</Switch>
 		</BrowserRouter>
 	);

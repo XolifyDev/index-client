@@ -6,7 +6,7 @@ export const PageLayout = ({ children }) => {
 		<>
 			<Nav />
 
-			<main>
+			<main style={{ marginTop: '7vh' }}>
 				{children}
 
 				<Footer />
