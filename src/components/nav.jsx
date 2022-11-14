@@ -1,51 +1,71 @@
-export const Nav = () => (
-	<header>
-		<nav
-			className='navbar navbar-expand-md navbar-dark fixed-top bg-dark'
-			style={{ height: '7vh' }}
-		>
-			<div className='container-fluid'>
-				<a className='navbar-brand' href='/'>
-					FiveM Designs
-				</a>
-				<button
-					className='navbar-toggler'
-					type='button'
-					data-bs-toggle='collapse'
-					data-bs-target='#navbarCollapse'
-					aria-controls='navbarCollapse'
-					aria-expanded='false'
-					aria-label='Toggle navigation'
-				>
-					<span className='navbar-toggler-icon'></span>
-				</button>
-				<div className='collapse navbar-collapse' id='navbarCollapse'>
-					<ul className='navbar-nav me-auto mb-2 mb-md-0'>
-						<li className='nav-item'>
-							<a
-								className='nav-link active'
-								aria-current='page'
-								href='/discord'
-							>
-								Discord
-							</a>
-						</li>
-					</ul>
-					<div className='d-flex'>
-						<ul className='navbar-nav me-auto mb-2 mb-md-0'>
-							<li className='nav-item'>
-								<a
-									className='nav-link active'
-									aria-current='page'
-									href='#'
+import { useContext } from 'react';
+import { Button } from 'react-bootstrap';
+import { UserAuthContext } from '../contexts';
+
+export const Nav = () => {
+	const { login, logout, user } = useContext(UserAuthContext);
+
+	return (
+		<header>
+			<nav
+				className='navbar navbar-expand-md navbar-dark fixed-top bg-dark'
+				style={{ height: '7vh' }}
+			>
+				<div className='container-fluid' style={{ color: '#eee' }}>
+					<div
+						style={{
+							display: 'flex',
+							alignItems: 'center',
+							width: '100%',
+						}}
+					>
+						<a
+							href='/'
+							className='h4'
+							style={{
+								padding: '0',
+								margin: '0',
+								cursor: 'pointer',
+								textDecoration: 'none',
+								color: '#eee',
+							}}
+						>
+							FiveM Designs
+						</a>
+
+						<a
+							href='/discord'
+							target='_blank'
+							style={{
+								fontWeight: '700',
+								textDecoration: 'none',
+								color: '#eee',
+								marginLeft: '20px',
+							}}
+						>
+							Discord
+						</a>
+
+						<div style={{ marginLeft: 'auto', marginRight: '5px' }}>
+							{user ? (
+								<Button
+									onClick={logout}
+									style={{ fontWeight: '700' }}
 								>
-									Home
-								</a>
-							</li>
-						</ul>
+									Logout
+								</Button>
+							) : (
+								<Button
+									onClick={login}
+									style={{ fontWeight: '700' }}
+								>
+									Login
+								</Button>
+							)}
+						</div>
 					</div>
 				</div>
-			</div>
-		</nav>
-	</header>
-);
+			</nav>
+		</header>
+	);
+};
