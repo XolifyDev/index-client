@@ -51,8 +51,6 @@ export const LandingPage = () => {
 			<div
 				style={{
 					marginTop: '65px',
-					marginBottom: '75px',
-					maxHeight: '450px',
 					overflow: 'none',
 				}}
 			>

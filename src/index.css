@@ -44,3 +44,7 @@ body {
 	text-align: center;
 	min-height: 100vh;
 }
+
+.navbar {
+	background-color: transparent !important;
+}

@@ -32,7 +32,7 @@ export const Templates = () => (
 	<div
 		id='templates'
 		className='container marketing'
-		style={{ paddingTop: '4vh' }}
+		style={{ paddingTop: '8vh' }}
 	>
 		<h1 className='h2'>Website Templates</h1>
 
