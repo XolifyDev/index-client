@@ -4,12 +4,14 @@ import { Card, Button } from 'react-bootstrap';
 
 const ButtonHex = 'rgb(38, 40, 43)';
 
-const TemplateCard = ({ template }) => (
-	<Card body style={{ marginBottom: '2vh' }}>
-		<Card.Img src={template.template} />
+export const TemplateCard = ({ template }) => (
+	<Card body style={{ paddingBottom: '2vh', height: '100%' }}>
+		<Card.Img src={template.template} style={{ width: '100%' }} />
 
 		<Card.Title style={{ marginTop: '1.5vh' }}>
-			<h1 className='h3'>{template.name}</h1>
+			<h1 className='h3'>
+				<span style={{ color: 'black' }}>{template.name}</span>
+			</h1>
 		</Card.Title>
 
 		<div>
@@ -30,13 +32,17 @@ export const Templates = () => (
 	<div
 		id='templates'
 		className='container marketing'
-		style={{ marginTop: '5vh' }}
+		style={{ paddingTop: '4vh' }}
 	>
 		<h1 className='h2'>Website Templates</h1>
 
-		<div className='row' style={{ marginTop: '2.5vh' }}>
+		<div className='row' style={{ marginTop: '4vh' }}>
 			{templates.map((template, index) => (
-				<div className='col-md-4' key={index}>
+				<div
+					className='col-md-4'
+					key={index}
+					style={{ paddingBottom: '3vh' }}
+				>
 					<TemplateCard template={template} />
 				</div>
 			))}

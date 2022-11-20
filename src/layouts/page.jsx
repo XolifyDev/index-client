@@ -1,16 +1,23 @@
 import { Footer } from '../components/footer';
 import { Nav } from '../components/nav';
 
-export const PageLayout = ({ children }) => {
+export const PageLayout = ({ children, page }) => {
 	return (
 		<>
-			<Nav />
+			<header>
+				<Nav />
+			</header>
 
-			<main style={{ marginTop: '7vh' }}>
-				{children}
+			<div style={{ marginTop: '80px' }}>{children}</div>
 
+			<div
+				style={{
+					paddingTop: page ? '20px' : '220px',
+					paddingBottom: '30px',
+				}}
+			>
 				<Footer />
-			</main>
+			</div>
 		</>
 	);
 };

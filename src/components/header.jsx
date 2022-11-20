@@ -47,6 +47,7 @@ export const Header = () => (
 						backgroundColor: ButtonHex,
 						borderColor: ButtonHex,
 					}}
+					href='/templates'
 				>
 					View Templates
 				</Button>

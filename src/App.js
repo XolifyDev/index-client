@@ -1,12 +1,18 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-import { LandingPage, UserSitesPage } from './pages';
+import { LandingPage, UserSitesPage, TemplatesPage } from './pages';
 
 const App = () => {
 	return (
 		<BrowserRouter>
 			<Switch>
 				<Route path='/' exact={true} component={LandingPage} />
+
+				<Route
+					path='/templates'
+					exact={true}
+					component={TemplatesPage}
+				/>
 
 				<Route path='/sites' exact={true} component={UserSitesPage} />
 
