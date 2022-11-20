@@ -2,3 +2,45 @@ body {
 	background-color: rgb(38, 40, 43) !important;
 	color: #eee !important;
 }
+
+/* Scroll bar */
+::-webkit-scrollbar {
+	width: 10px;
+}
+::-webkit-scrollbar-track {
+	background: rgba(38, 40, 43, 0);
+}
+::-webkit-scrollbar-thumb {
+	background: rgba(136, 136, 136, 0.075);
+}
+::-webkit-scrollbar-thumb:hover {
+	background: rgba(136, 136, 136, 0.445);
+}
+::-webkit-scrollbar-corner {
+	background: rgba(136, 136, 136, 0);
+}
+
+@keyframes slideInLeft {
+	0% {
+		transform: translateY(-100%);
+	}
+	100% {
+		transform: translateY(0);
+	}
+}
+
+.body {
+	animation: 1s ease-out 0s 1 slideInLeft;
+	background-color: var(--color1);
+}
+
+.header {
+	text-align: center;
+	color: #fff;
+	font-family: var(--font1);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	min-height: 100vh;
+}

@@ -48,8 +48,9 @@ export const Header = () => (
 						borderColor: ButtonHex,
 					}}
 					href='/templates'
+					size='lg'
 				>
-					View Templates
+					<i className='fas fa-globe'></i> View Templates
 				</Button>
 
 				<Button
@@ -60,8 +61,12 @@ export const Header = () => (
 						borderColor: ButtonHex,
 					}}
 					href='/discord'
+					size='lg'
 				>
-					Support Discord
+					<span style={{ fontWeight: '200' }}>
+						<i className='fab fa-discord'></i>
+					</span>{' '}
+					Discord Server
 				</Button>
 			</div>
 		</div>
