@@ -70,6 +70,19 @@ export const Header = () => {
 						Discord Server
 					</Button>
 				</div>
+
+				<Button
+					style={{
+						fontWeight: '700',
+						margin: '5px',
+						backgroundColor: ButtonHex,
+						borderColor: ButtonHex,
+					}}
+					href={'http://demo.fivem.design'}
+					size='lg'
+				>
+					Demo Themes
+				</Button>
 			</div>
 		</div>
 	);
