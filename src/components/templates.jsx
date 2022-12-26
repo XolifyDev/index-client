@@ -2,52 +2,77 @@ import templates from '../templates';
 
 import { Card, Button } from 'react-bootstrap';
 
-const ButtonHex = 'rgb(38, 40, 43)';
+const ButtonHex = 'rgb(255, 98, 0)';
 
 export const TemplateCard = ({ template }) => (
-	<Card body style={{ paddingBottom: '2vh', height: '100%' }}>
-		<Card.Img src={template.template} style={{ width: '100%' }} />
+	<Card
+		bg='secondary'
+		text='light'
+		style={{
+			color: 'black',
+			border: '3px solid',
+			borderColor: 'rgb(255, 98, 0)',
+		}}
+	>
+		<Card.Body
+			style={{
+				backgroundColor: 'rgb(33, 37, 41)',
+				color: '#eee',
+			}}
+		>
+			<Card.Img src={template.template} style={{ width: '100%' }} />
 
-		<Card.Title style={{ marginTop: '1.5vh' }}>
-			<h1 className='h3'>
-				<span style={{ color: 'black' }}>{template.name}</span>
-			</h1>
-		</Card.Title>
+			<Card.Title style={{ marginTop: '20px', marginBottom: '10px' }}>
+				<h1 className='h4'>
+					<span style={{ color: '#eee' }}>{template.name}</span>
+				</h1>
 
-		<div>
-			<Button
-				style={{
-					fontWeight: '700',
-					backgroundColor: ButtonHex,
-					borderColor: ButtonHex,
-				}}
-			>
-				Setup Theme
-			</Button>
-		</div>
+				<p>$10.00</p>
+			</Card.Title>
+
+			<hr />
+
+			<div>
+				<Button
+					style={{
+						width: '100%',
+						fontWeight: '700',
+						fontSize: '20px',
+						marginBottom: '15px',
+						backgroundColor: ButtonHex,
+						borderColor: ButtonHex,
+					}}
+				>
+					Setup Theme
+				</Button>
+				<Button
+					style={{
+						width: '100%',
+						fontWeight: '700',
+						fontSize: '20px',
+						backgroundColor: ButtonHex,
+						borderColor: ButtonHex,
+					}}
+					target='_blank'
+					href={template.demo}
+				>
+					Demo Theme
+				</Button>
+			</div>
+		</Card.Body>
 	</Card>
 );
 
 export const Templates = () => (
-	<div
-		id='templates'
-		className='container marketing'
-		style={{ paddingTop: '8vh' }}
-	>
-		<h1 className='h2'>Website Templates</h1>
-
-		<div className='row' style={{ marginTop: '4vh' }}>
-			{templates.map((template, index) => (
-				<div
-					className='col-md-4'
-					key={index}
-					style={{ paddingBottom: '3vh' }}
-				>
-					<TemplateCard template={template} />
-				</div>
-			))}
-		</div>
-
-		<hr className='featurette-divider' />
+	<div className='row'>
+		{templates.map((template, index) => (
+			<div
+				className='col-md-4'
+				key={index}
+				style={{ paddingBottom: '3vh' }}
+			>
+				<TemplateCard template={template} />
+			</div>
+		))}
 	</div>
 );

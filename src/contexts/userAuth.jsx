@@ -1,7 +1,6 @@
-import { createContext, useState, useEffect, useContext } from 'react';
+import { createContext, useState, useEffect } from 'react';
+import { fetchUser, tokenPrefix } from '../utils';
 import { API_URL } from '../urls';
-
-const tokenPrefix = 'user-token';
 
 export const UserAuthContext = createContext();
 
@@ -22,11 +21,11 @@ export const UserAuthContextProvider = ({ children }) => {
 	const authencateUser = () => {
 		if (!token) return;
 
-		setUser({
-			name: 'IamAdren',
-		});
+		fetchUser().then(({ data }) => {
+			if (data.error) return;
 
-		console.log('Authencating token', token);
+			setUser(data.user);
+		});
 	};
 
 	const setUserToken = () => {

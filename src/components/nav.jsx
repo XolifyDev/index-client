@@ -1,8 +1,9 @@
 import { useContext, useState, useEffect } from 'react';
-import { Button } from 'react-bootstrap';
 import { UserAuthContext } from '../contexts';
+import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
-export const Nav = () => {
+export const Nav = ({ containerized }) => {
 	const { login, logout, user } = useContext(UserAuthContext);
 
 	const [Scrolled, setScrolled] = useState(false);
@@ -21,7 +22,10 @@ export const Nav = () => {
 				}
 				style={Scrolled ? { height: '80px' } : null}
 			>
-				<div className='container-fluid' style={{ color: '#eee' }}>
+				<div
+					className={!containerized ? 'container-fluid' : null}
+					style={{ color: '#eee' }}
+				>
 					<div
 						style={{
 							display: 'flex',
@@ -62,6 +66,30 @@ export const Nav = () => {
 						</div>
 
 						<a
+							href='/templates'
+							style={{
+								fontWeight: '700',
+								textDecoration: 'none',
+								color: '#eee',
+								marginLeft: '20px',
+							}}
+						>
+							Templates
+						</a>
+
+						<a
+							href='/hosting'
+							style={{
+								fontWeight: '700',
+								textDecoration: 'none',
+								color: '#eee',
+								marginLeft: '20px',
+							}}
+						>
+							Hosting
+						</a>
+
+						<a
 							href='/discord'
 							target='_blank'
 							style={{
@@ -76,16 +104,30 @@ export const Nav = () => {
 
 						<div style={{ marginLeft: 'auto', marginRight: '5px' }}>
 							{user ? (
-								<Button
-									onClick={logout}
-									style={{
-										fontWeight: '700',
-										backgroundColor: 'rgb(255, 98, 0)',
-										borderColor: 'rgb(255, 98, 0)',
-									}}
-								>
-									Logout
-								</Button>
+								<>
+									<a
+										href='/sites'
+										style={{
+											fontWeight: '700',
+											textDecoration: 'none',
+											color: '#eee',
+											marginRight: '20px',
+										}}
+									>
+										My Sites
+									</a>
+
+									<Button
+										onClick={logout}
+										style={{
+											fontWeight: '700',
+											backgroundColor: 'rgb(255, 98, 0)',
+											borderColor: 'rgb(255, 98, 0)',
+										}}
+									>
+										Logout
+									</Button>
+								</>
 							) : (
 								<Button
 									onClick={login}

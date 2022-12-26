@@ -1,22 +1,8 @@
-import CommunityTemplate from './assets/templates/community.png';
-import DeveloperStoreTemplate from './assets/templates/devStore.png';
-
 const Templates = [
 	{
-		name: 'Community Landing Page',
-		template: CommunityTemplate,
-	},
-	{
 		name: 'Developer Store Page',
-		template: DeveloperStoreTemplate,
-	},
-	{
-		name: 'Developer Store Page',
-		template: DeveloperStoreTemplate,
-	},
-	{
-		name: 'Developer Store Page',
-		template: DeveloperStoreTemplate,
+		template: 'https://i.imgur.com/iAuXP2x.png',
+		demo: 'http://demo.fivem.design',
 	},
 ];
 

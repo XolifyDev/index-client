@@ -10,3 +10,6 @@ export const useQuery = () => {
 export const silentUpdate = (url) => {
 	return window.history.replaceState(null, null, url);
 };
+
+export * from './auth';
+export * from './axios';

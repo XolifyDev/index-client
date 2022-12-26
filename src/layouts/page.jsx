@@ -1,11 +1,15 @@
 import { Footer } from '../components/footer';
 import { Nav } from '../components/nav';
 
-export const PageLayout = ({ children, page }) => {
+export const PageLayout = ({ children, page, container }) => {
 	return (
 		<>
-			<div style={{ position: 'fixed', width: '100%' }}>
-				<Nav />
+			<div
+				style={{ position: !container ? 'fixed' : null, width: '100%' }}
+			>
+				<div className={container ? 'container' : null}>
+					<Nav containerized={container} />
+				</div>
 			</div>
 
 			<div>{children}</div>
