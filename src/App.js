@@ -6,6 +6,8 @@ import {
 	TemplatesPage,
 	UserTokenPage,
 	HostingPage,
+	AccountPage,
+	UserCartPage,
 } from './pages';
 
 const App = () => {
@@ -21,6 +23,10 @@ const App = () => {
 				<Route path='/hosting' exact component={HostingPage} />
 
 				<Route path='/sites' exact component={UserSitesPage} />
+
+				<Route path='/account' exact component={AccountPage} />
+
+				<Route path='/cart' exact component={UserCartPage} />
 
 				<Route
 					path='/discord'

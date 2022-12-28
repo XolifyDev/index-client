@@ -53,7 +53,7 @@ export const SiteCard = ({ loading, site }) => {
 
 							<Button
 								target='_blank'
-								href={`http://${site.src}`}
+								href={`https://${site.src}`}
 								disabled={!site.active}
 								style={{
 									fontWeight: '700',

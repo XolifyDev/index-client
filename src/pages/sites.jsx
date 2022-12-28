@@ -135,12 +135,18 @@ export const UserSitesPage = () => {
 			setUserSites(data.sites);
 
 			setFetchingSites(false);
+
+			let needsRefresh = false;
+
+			data.sites.forEach((site) => {
+				if (!site.active) needsRefresh = true;
+			});
+
+			if (needsRefresh) setTimeout(resetData, 4500);
 		});
 	};
 
-	useEffect(() => {
-		resetData();
-	}, []);
+	useEffect(resetData, []);
 
 	return (
 		<PageLayout container>

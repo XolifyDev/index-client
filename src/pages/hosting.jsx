@@ -1,6 +1,153 @@
-import { Container, Card } from 'react-bootstrap';
+import { Container, Card, Button } from 'react-bootstrap';
 import { PageLayout } from '../layouts/page';
 import { Templates } from '../components/templates';
+
+const TierCard = ({ name, price, features }) => (
+	<Card
+		bg='secondary'
+		text='light'
+		style={{
+			color: 'black',
+			border: '3px solid',
+			borderColor: 'rgb(255, 98, 0)',
+		}}
+	>
+		<Card.Body
+			style={{
+				height: '500px',
+				borderRadius: '1.5px',
+				backgroundColor: 'rgb(33, 37, 41)',
+			}}
+		>
+			<div style={{ height: '80%' }}>
+				<div
+					style={{
+						marginTop: '12.5px',
+						height: '85px',
+						display: 'flex',
+						alignItems: 'center',
+						justifyContent: 'center',
+					}}
+				>
+					<div>
+						<Card.Title
+							style={{
+								fontSize: '30px',
+								fontWeight: '700',
+								fontStyle: 'italic',
+							}}
+						>
+							{name}
+						</Card.Title>
+
+						{price && (
+							<p
+								style={{
+									fontWeight: '700',
+									padding: '0',
+									margin: '0',
+								}}
+							>
+								{price}
+							</p>
+						)}
+					</div>
+				</div>
+
+				<div
+					style={{
+						width: '100%',
+						margin: 'auto',
+						display: 'flex',
+						justifyContent: 'center',
+					}}
+				>
+					<hr style={{ width: '85%' }} />
+				</div>
+
+				<div>
+					<p
+						style={{
+							fontWeight: '700',
+							fontSize: '20px',
+							margin: '0',
+							padding: '0',
+						}}
+					>
+						Features
+					</p>
+
+					<div
+						style={{
+							width: '85%',
+							margin: 'auto',
+							paddingTop: '20px',
+						}}
+					>
+						{features.map((feature) => (
+							<div
+								style={{
+									textAlign: 'left',
+									display: 'flex',
+									alignItems: 'center',
+								}}
+							>
+								<div
+									style={{
+										width: '20%',
+										textAlign: 'center',
+									}}
+								>
+									<p style={{ fontSize: '20px' }}>
+										{feature.enabled ? (
+											<i className='fas fa-check'></i>
+										) : (
+											<i className='fas fa-times'></i>
+										)}
+									</p>
+								</div>
+
+								<div>
+									<p>{feature.name}</p>
+								</div>
+							</div>
+						))}
+					</div>
+				</div>
+			</div>
+
+			{price && (
+				<div style={{ height: '20%' }}>
+					<div
+						style={{
+							width: '100%',
+							margin: 'auto',
+							display: 'flex',
+							justifyContent: 'center',
+						}}
+					>
+						<hr style={{ width: '85%' }} />
+					</div>
+
+					<div>
+						<div style={{ width: '85%', margin: 'auto' }}>
+							<Button
+								style={{
+									width: '100%',
+									fontWeight: '700',
+									backgroundColor: 'rgb(255, 98, 0)',
+									borderColor: 'rgb(255, 98, 0)',
+								}}
+							>
+								Purchase Hosting
+							</Button>
+						</div>
+					</div>
+				</div>
+			)}
+		</Card.Body>
+	</Card>
+);
 
 export const HostingPage = () => {
 	return (
@@ -18,54 +165,31 @@ export const HostingPage = () => {
 						</div>
 					</div>
 
-					<div
-						style={{
-							height: '55vh',
-							overflowY: 'auto',
-							overflowX: 'hidden',
-						}}
-					>
+					<div style={{ paddingBottom: '65px' }}>
 						<div className='row'>
 							<div className='col-md-2'></div>
 							<div className='col-md-4'>
-								<Card
-									bg='secondary'
-									text='light'
-									style={{
-										height: '30vh',
-										color: 'black',
-										borderColor: 'rgb(33, 37, 41)',
-									}}
-								>
-									<Card.Body
-										style={{
-											borderRadius: '1.5px',
-											backgroundColor: 'rgb(33, 37, 41)',
-										}}
-									>
-										<Card.Title>test</Card.Title>
-									</Card.Body>
-								</Card>
+								<TierCard
+									name='Upgraded Hosting'
+									price='$10 Per Month'
+									features={[
+										{
+											name: 'Custom Domains',
+											enabled: true,
+										},
+									]}
+								/>
 							</div>
 							<div className='col-md-4'>
-								<Card
-									bg='secondary'
-									text='light'
-									style={{
-										height: '30vh',
-										color: 'black',
-										borderColor: 'rgb(33, 37, 41)',
-									}}
-								>
-									<Card.Body
-										style={{
-											borderRadius: '1.5px',
-											backgroundColor: 'rgb(33, 37, 41)',
-										}}
-									>
-										<Card.Title>test</Card.Title>
-									</Card.Body>
-								</Card>
+								<TierCard
+									name='Free Hosting'
+									features={[
+										{
+											name: 'Custom Domains',
+											enabled: false,
+										},
+									]}
+								/>
 							</div>
 						</div>
 					</div>

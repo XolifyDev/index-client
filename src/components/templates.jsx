@@ -20,14 +20,21 @@ export const TemplateCard = ({ template }) => (
 				color: '#eee',
 			}}
 		>
-			<Card.Img src={template.template} style={{ width: '100%' }} />
+			<Card.Img
+				src={template.template}
+				style={{
+					width: '100%',
+					border: '2px solid',
+					borderColor: 'rgb(255, 98, 0)',
+				}}
+			/>
 
-			<Card.Title style={{ marginTop: '20px', marginBottom: '10px' }}>
+			<Card.Title style={{ marginTop: '15px', marginBottom: '15px' }}>
 				<h1 className='h4'>
 					<span style={{ color: '#eee' }}>{template.name}</span>
 				</h1>
 
-				<p>$10.00</p>
+				<p>Price: {template.price}</p>
 			</Card.Title>
 
 			<hr />
@@ -38,25 +45,25 @@ export const TemplateCard = ({ template }) => (
 						width: '100%',
 						fontWeight: '700',
 						fontSize: '20px',
-						marginBottom: '15px',
-						backgroundColor: ButtonHex,
-						borderColor: ButtonHex,
+						backgroundColor: 'rgb(63, 65, 66)',
+						borderColor: 'rgb(63, 65, 66)',
 					}}
+					target='_blank'
+					href={template.demo}
 				>
-					Setup Theme
+					<i className='far fa-eye'></i> Demo Theme
 				</Button>
 				<Button
 					style={{
 						width: '100%',
 						fontWeight: '700',
 						fontSize: '20px',
+						marginTop: '15px',
 						backgroundColor: ButtonHex,
 						borderColor: ButtonHex,
 					}}
-					target='_blank'
-					href={template.demo}
 				>
-					Demo Theme
+					<i className='fas fa-shopping-cart'></i> Purchase Theme
 				</Button>
 			</div>
 		</Card.Body>
