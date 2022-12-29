@@ -1,11 +1,15 @@
+import { Container, Button, Card, Table } from 'react-bootstrap';
 import { PageLayout } from '../layouts/page';
-import { Container, Button, Card } from 'react-bootstrap';
+
+const TRStyling = { border: 'none' };
+
+const TDStyling = { border: 'none' };
 
 export const AccountPage = () => {
 	return (
 		<PageLayout container>
 			<Container style={{ paddingTop: '80px' }}>
-				<div className='container'>
+				<div className='container' style={{ paddingBottom: '65px' }}>
 					<div
 						style={{
 							// paddingBottom: '20px',
@@ -16,36 +20,6 @@ export const AccountPage = () => {
 						<div style={{ width: '100%' }}>
 							<h1 className='h3'>User Account</h1>
 						</div>
-
-						{/* <div style={{ marginLeft: 'auto' }}>
-							<Button
-								size='sm'
-								// onClick={resetData}
-								// disabled={FetchingSites}
-								style={{
-									fontWeight: '700',
-									backgroundColor: 'rgb(63, 65, 66)',
-									borderColor: 'rgb(63, 65, 66)',
-									marginRight: '10px',
-								}}
-							>
-								<i className='fas fa-sync-alt'></i> Refresh data
-							</Button>
-							<Button
-								size='sm'
-								// disabled={FetchingSites}
-								style={{
-									fontWeight: '700',
-									backgroundColor: 'rgb(255, 98, 0)',
-									borderColor: 'rgb(255, 98, 0)',
-								}}
-								// onClick={() => {
-								// 	setShowCreateModal(true);
-								// }}
-							>
-								<i className='fas fa-plus'></i> Create New Site
-							</Button>
-						</div> */}
 					</div>
 
 					<hr />
@@ -139,6 +113,71 @@ export const AccountPage = () => {
 										</div>
 									</div>
 								</div>
+							</Card>
+						</Card>
+					</div>
+
+					<div style={{ paddingTop: '30px' }}>
+						<h1 className='h4'>User Assets</h1>
+
+						<Card
+							bg='secondary'
+							text='light'
+							style={{
+								color: 'black',
+								border: '3px solid',
+								borderColor: 'rgb(255, 98, 0)',
+								marginTop: '25px',
+							}}
+						>
+							<Card
+								body
+								style={{
+									backgroundColor: 'rgb(33, 37, 41)',
+									borderColor: 'rgb(33, 37, 41)',
+								}}
+							>
+								<Table
+									style={{
+										border: 'none',
+										color: '#eee',
+									}}
+								>
+									<thead>
+										<tr>
+											<th>#</th>
+											<th>First Name</th>
+											<th>Last Name</th>
+											<th>Username</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr style={TRStyling}>
+											<td style={TDStyling}>1</td>
+											<td style={TDStyling}>Mark</td>
+											<td style={TDStyling}>Otto</td>
+											<td style={TDStyling}>@mdo</td>
+										</tr>
+										<tr style={TRStyling}>
+											<td style={TDStyling}>1</td>
+											<td style={TDStyling}>Mark</td>
+											<td style={TDStyling}>Otto</td>
+											<td style={TDStyling}>@mdo</td>
+										</tr>
+										<tr style={TRStyling}>
+											<td style={TDStyling}>1</td>
+											<td style={TDStyling}>Mark</td>
+											<td style={TDStyling}>Otto</td>
+											<td style={TDStyling}>@mdo</td>
+										</tr>
+										<tr style={TRStyling}>
+											<td style={TDStyling}>1</td>
+											<td style={TDStyling}>Mark</td>
+											<td style={TDStyling}>Otto</td>
+											<td style={TDStyling}>@mdo</td>
+										</tr>
+									</tbody>
+								</Table>
 							</Card>
 						</Card>
 					</div>

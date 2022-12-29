@@ -5,10 +5,9 @@ import { silentUpdate, useQuery } from '../utils';
 import { Helmet } from 'react-helmet';
 import { PageLayout } from '../layouts/page';
 import { Header } from '../components/header';
+import { Developers } from '../developers';
 
 import Templates from '../templates';
-
-import LOD from '../assets/partners/lod.png';
 
 export const LandingPage = () => {
 	const query = useQuery();
@@ -71,53 +70,67 @@ export const LandingPage = () => {
 							}}
 						>
 							<h1 className='h3'>
-								Developers Using Adrens Store
+								Developers Using <a href='#'>Adrens Store</a>
 							</h1>
 
 							<div className='row' style={{ paddingTop: '25px' }}>
-								<div className='col-md-3'>
-									<Card
-										style={{
-											backgroundColor: 'rgb(33, 37, 41)',
-											border: '3px solid',
-											borderColor: 'rgb(255, 98, 0)',
-										}}
-									>
+								{Developers.map((dev) => (
+									<div className='col-md-3'>
 										<Card
-											body
 											style={{
 												backgroundColor:
 													'rgb(33, 37, 41)',
-												borderColor: 'rgb(33, 37, 41)',
+												border: '3px solid',
+												borderColor: 'rgb(255, 98, 0)',
 											}}
 										>
-											<Card.Img src={LOD} />
-
-											<Card.Title
-												style={{ paddingTop: '10px' }}
-											>
-												<h1 className='h3'>
-													LOD Scripts
-												</h1>
-											</Card.Title>
-
-											<hr />
-
-											<Button
+											<Card
+												body
 												style={{
-													width: '100%',
-													fontWeight: '700',
-													borderColor:
-														'rgb(255, 98, 0)',
 													backgroundColor:
-														'rgb(255, 98, 0)',
+														'rgb(33, 37, 41)',
+													borderColor:
+														'rgb(33, 37, 41)',
 												}}
 											>
-												Store
-											</Button>
+												<a
+													target='_blank'
+													href={dev.src}
+												>
+													<Card.Img src={dev.logo} />
+												</a>
+
+												<Card.Title
+													style={{
+														paddingTop: '10px',
+													}}
+												>
+													<h1 className='h3'>
+														{dev.name}
+													</h1>
+												</Card.Title>
+
+												<hr />
+
+												<Button
+													style={{
+														width: '100%',
+														fontWeight: '700',
+														borderColor:
+															'rgb(255, 98, 0)',
+														backgroundColor:
+															'rgb(255, 98, 0)',
+													}}
+													target='_blank'
+													href={dev.src}
+												>
+													<i className='fas fa-eye'></i>{' '}
+													Store Page
+												</Button>
+											</Card>
 										</Card>
-									</Card>
-								</div>
+									</div>
+								))}
 							</div>
 						</div>
 					</div>
@@ -225,7 +238,7 @@ export const LandingPage = () => {
 															fontWeight: '700',
 														}}
 													>
-														AdrenCAD integration
+														Tebex integration
 													</li>
 												</div>
 											</div>

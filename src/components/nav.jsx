@@ -129,20 +129,6 @@ export const Nav = ({ containerized }) => {
 										Your Account
 									</a>
 
-									<a
-										href='/cart'
-										style={{
-											fontWeight: '700',
-											textDecoration: 'none',
-											color: '#eee',
-											marginRight: '20px',
-										}}
-									>
-										<i className='fas fa-shopping-cart'></i>
-										{/* {' '}
-										Cart */}
-									</a>
-
 									<Button
 										onClick={logout}
 										style={{

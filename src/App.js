@@ -7,7 +7,6 @@ import {
 	UserTokenPage,
 	HostingPage,
 	AccountPage,
-	UserCartPage,
 } from './pages';
 
 const App = () => {
@@ -25,8 +24,6 @@ const App = () => {
 				<Route path='/sites' exact component={UserSitesPage} />
 
 				<Route path='/account' exact component={AccountPage} />
-
-				<Route path='/cart' exact component={UserCartPage} />
 
 				<Route
 					path='/discord'

@@ -139,7 +139,7 @@ const TierCard = ({ name, price, features }) => (
 									borderColor: 'rgb(255, 98, 0)',
 								}}
 							>
-								Purchase Hosting
+								Upgrade Site
 							</Button>
 						</div>
 					</div>

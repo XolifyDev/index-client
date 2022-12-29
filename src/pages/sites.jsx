@@ -200,14 +200,7 @@ export const UserSitesPage = () => {
 
 					<hr />
 
-					<div
-						style={{
-							maxHeight: '65vh',
-							minHeight: '55vh',
-							overflowY: 'auto',
-							overflowX: 'hidden',
-						}}
-					>
+					<div>
 						{!FetchingSites ? (
 							<div
 								className={
