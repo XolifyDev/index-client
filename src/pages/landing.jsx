@@ -70,7 +70,10 @@ export const LandingPage = () => {
 							}}
 						>
 							<h1 className='h3'>
-								Developers Using <a href='#'>Adrens Store</a>
+								Developers Using{' '}
+								<a href='#' style={{ color: '#eee' }}>
+									Adrens Store
+								</a>
 							</h1>
 
 							<div className='row' style={{ paddingTop: '25px' }}>

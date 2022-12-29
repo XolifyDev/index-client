@@ -5,7 +5,11 @@ export const PageLayout = ({ children, page, container }) => {
 	return (
 		<>
 			<div
-				style={{ position: !container ? 'fixed' : null, width: '100%' }}
+				style={{
+					position: !container ? 'fixed' : null,
+					width: '100%',
+					zIndex: '100',
+				}}
 			>
 				<div className={container ? 'container' : null}>
 					<Nav containerized={container} />
