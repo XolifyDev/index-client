@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Card, Placeholder, Button } from 'react-bootstrap';
 import { SiteModal } from './siteModal';
+
+import html2canvas from 'html2canvas';
 
 export const SiteCard = ({ loading, site }) => {
 	const [ShowSettingsModal, setShowSettingsModal] = useState(false);
@@ -28,7 +30,7 @@ export const SiteCard = ({ loading, site }) => {
 				>
 					{!loading ? (
 						<>
-							<Card.Img src='https://i.imgur.com/iAuXP2x.png' />
+							<Card.Img src='http://localhost:3000/static/media/store.8fb304ef7e5292e733f9.png' />
 
 							<Card.Title style={{ paddingTop: '15px' }}>
 								{site.src}
