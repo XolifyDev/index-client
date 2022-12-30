@@ -177,6 +177,10 @@ export const HostingPage = () => {
 											name: 'Custom Domains',
 											enabled: true,
 										},
+										{
+											name: 'Discord Integration',
+											enabled: true,
+										},
 									]}
 								/>
 							</div>
