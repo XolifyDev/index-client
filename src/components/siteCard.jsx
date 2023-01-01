@@ -1,8 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Card, Placeholder, Button } from 'react-bootstrap';
 import { SiteModal } from './siteModal';
-
-import html2canvas from 'html2canvas';
 
 export const SiteCard = ({ loading, site }) => {
 	const [ShowSettingsModal, setShowSettingsModal] = useState(false);
@@ -12,6 +10,7 @@ export const SiteCard = ({ loading, site }) => {
 			<SiteModal
 				show={ShowSettingsModal}
 				setShow={setShowSettingsModal}
+				site={site}
 			/>
 
 			<Card

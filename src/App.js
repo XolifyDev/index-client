@@ -1,4 +1,6 @@
+import { useContext } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { UserAuthContext } from './contexts';
 
 import {
 	LandingPage,
@@ -7,9 +9,12 @@ import {
 	UserTokenPage,
 	HostingPage,
 	AccountPage,
+	PageNotFound,
 } from './pages';
 
 const App = () => {
+	const { login, logout } = useContext(UserAuthContext);
+
 	return (
 		<BrowserRouter>
 			<Switch>
@@ -26,15 +31,28 @@ const App = () => {
 				<Route path='/account' exact component={AccountPage} />
 
 				<Route
-					path='/discord'
 					exact
+					path='/login'
 					component={() => {
-						window.location.href =
-							process.env.REACT_APP_DISCORD_INVITE;
+						login();
 
-						return null;
+						return '';
 					}}
 				/>
+
+				<Route
+					exact
+					path='/logout'
+					component={() => {
+						logout();
+
+						window.location.href = '/';
+
+						return '';
+					}}
+				/>
+
+				<Route component={PageNotFound} />
 			</Switch>
 		</BrowserRouter>
 	);
