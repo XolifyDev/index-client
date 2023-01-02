@@ -10,6 +10,7 @@ import {
 	HostingPage,
 	AccountPage,
 	PageNotFound,
+	DevelopersPage,
 } from './pages';
 
 const App = () => {
@@ -21,6 +22,8 @@ const App = () => {
 				<Route path='/' exact component={LandingPage} />
 
 				<Route path='/token/:token' exact component={UserTokenPage} />
+
+				<Route path='/developers' exact component={DevelopersPage} />
 
 				<Route path='/templates' exact component={TemplatesPage} />
 
