@@ -2,6 +2,7 @@ import LODScripts from './assets/partners/lod.png';
 import ADrenCAD from './assets/partners/adrenCAD.png';
 import VastModifications from './assets/partners/vast.png';
 import DiscordSolutions from './assets/partners/discordSolutions.png';
+import WizardsWorld from './assets/partners/wizards.png';
 
 export const Developers = [
 	{
@@ -24,5 +25,10 @@ export const Developers = [
 		name: 'AdrenCAD',
 		src: 'https://store.adrencad.com/',
 		logo: ADrenCAD,
+	},
+	{
+		name: 'Wizards World',
+		src: 'https://wizards.fivem.design/',
+		logo: WizardsWorld,
 	},
 ];
