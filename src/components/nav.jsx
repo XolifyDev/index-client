@@ -191,7 +191,7 @@ export const Nav = ({ containerized }) => {
 							</div>
 
 							<a
-								href='https://www.fivem.design'
+								href='/templates'
 								style={{
 									fontWeight: '700',
 									textDecoration: 'none',
