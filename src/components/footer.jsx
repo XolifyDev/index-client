@@ -2,7 +2,8 @@ export const Footer = () => (
 	<footer className='container'>
 		<p className='float-end'>
 			<span style={{ color: '#eee' }}>
-			<a href='https://developers.fivem.design'>Developers</a> &middot; <a href='#'>Privacy</a> &middot; <a href='#'>Terms</a>
+				<a href='https://developers.fivem.design'>Developers</a>{' '}
+				&middot; <a href='#'>Privacy</a> &middot; <a href='#'>Terms</a>
 			</span>
 		</p>
 		<p style={{ fontWeight: '700' }}>

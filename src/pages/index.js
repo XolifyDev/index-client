@@ -5,4 +5,6 @@ export * from './sites';
 export * from './hosting';
 export * from './account';
 export * from './developers';
+export * from './portals';
+export * from './proxy';
 export * from './404';

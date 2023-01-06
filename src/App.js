@@ -1,6 +1,9 @@
 import { useContext } from 'react';
+import { Container } from 'react-bootstrap';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { PageLayout } from './layouts/page';
 import { UserAuthContext } from './contexts';
+import { REACT_APP_DEV_PORTAL } from './utils';
 
 import {
 	LandingPage,
@@ -11,12 +14,39 @@ import {
 	AccountPage,
 	PageNotFound,
 	DevelopersPage,
+	PortalsPage,
+	ProxyPage,
 } from './pages';
 
 const App = () => {
 	const { login, logout } = useContext(UserAuthContext);
 
-	return (
+	return REACT_APP_DEV_PORTAL ? (
+		<BrowserRouter>
+			<PageLayout container>
+				<Container
+					style={{
+						marginTop: '65px',
+						overflow: 'none',
+						height: '75vh',
+						overflow: 'auto',
+					}}
+				>
+					<Switch>
+						<Route path='/' component={PortalsPage} exact={true} />
+
+						<Route
+							path='/proxy-service'
+							component={ProxyPage}
+							exact={true}
+						/>
+
+						<Route component={() => (window.location.href = '/')} />
+					</Switch>
+				</Container>
+			</PageLayout>
+		</BrowserRouter>
+	) : (
 		<BrowserRouter>
 			<Switch>
 				<Route path='/' exact component={LandingPage} />

@@ -31,4 +31,9 @@ export const Developers = [
 		src: 'https://wizards.fivem.design/',
 		logo: WizardsWorld,
 	},
+	{
+		name: 'Paradise Modifications',
+		src: 'https://paradisemods.fivem.design/',
+		logo: WizardsWorld,
+	},
 ];

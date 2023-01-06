@@ -1,6 +1,8 @@
 import { useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
 
+const { REACT_APP_DEV_PORTAL } = process.env;
+
 export const useQuery = () => {
 	const { search } = useLocation();
 
@@ -36,3 +38,5 @@ export * from './axios';
 export * from './user';
 export * from './sites';
 export * from './billing';
+
+export { REACT_APP_DEV_PORTAL };
