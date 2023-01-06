@@ -3,6 +3,7 @@ import ADrenCAD from './assets/partners/adrenCAD.png';
 import VastModifications from './assets/partners/vast.png';
 import DiscordSolutions from './assets/partners/discordSolutions.png';
 import WizardsWorld from './assets/partners/wizards.png';
+import ParadiseModifications from './assets/partners/paradiseMods.png';
 
 export const Developers = [
 	{
@@ -34,6 +35,6 @@ export const Developers = [
 	{
 		name: 'Paradise Modifications',
 		src: 'https://paradisemods.fivem.design/',
-		logo: WizardsWorld,
+		logo: ParadiseModifications,
 	},
 ];
