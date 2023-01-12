@@ -77,33 +77,25 @@ export const LandingPage = () => {
 										}}
 									>
 										<Carousel>
-											<Carousel.Item>
-												<img
-													src={Templates[0].template}
-													style={{
-														width: '600px',
-														borderRadius: '15px',
-													}}
-												/>
-											</Carousel.Item>
-											<Carousel.Item>
-												<img
-													src={Templates[0].template}
-													style={{
-														width: '600px',
-														borderRadius: '15px',
-													}}
-												/>
-											</Carousel.Item>
-											<Carousel.Item>
-												<img
-													src={Templates[0].template}
-													style={{
-														width: '600px',
-														borderRadius: '15px',
-													}}
-												/>
-											</Carousel.Item>
+											{[
+												{
+													src: Templates[0].template,
+												},
+												...Templates[0].previewImgs,
+											].map((img) => {
+												return (
+													<Carousel.Item>
+														<img
+															src={img.src}
+															style={{
+																width: '600px',
+																borderRadius:
+																	'15px',
+															}}
+														/>
+													</Carousel.Item>
+												);
+											})}
 										</Carousel>
 									</div>
 
@@ -123,7 +115,7 @@ export const LandingPage = () => {
 												fontWeight: '700',
 											}}
 										>
-											Store Template
+											Adrens Store
 										</h1>
 
 										<ul
@@ -149,7 +141,25 @@ export const LandingPage = () => {
 															fontWeight: '700',
 														}}
 													>
-														Departments setup
+														Advanced Analytics
+													</li>
+												</div>
+												<div className='col-md-6'>
+													<li
+														style={{
+															fontWeight: '700',
+														}}
+													>
+														Advanced Analytics
+													</li>
+												</div>
+												<div className='col-md-6'>
+													<li
+														style={{
+															fontWeight: '700',
+														}}
+													>
+														Advanced Analytics
 													</li>
 												</div>
 												<div className='col-md-6'>
@@ -166,17 +176,39 @@ export const LandingPage = () => {
 
 										<div
 											style={{
-												paddingTop: '15px',
-												marginLeft: '5px',
+												width: '80%',
+												textAlign: 'center',
+												paddingTop: '25px',
 											}}
 										>
 											<Button
+												size='lg'
+												target='_blank'
+												href='https://demo.fivem.design/?demo=store'
 												style={{
 													fontWeight: '700',
 													backgroundColor:
 														'rgb(38, 40, 43)',
 													borderColor:
 														'rgb(38, 40, 43)',
+													width: '200px',
+													marginLeft: '15px',
+												}}
+											>
+												Purchase Theme
+											</Button>
+											<Button
+												size='lg'
+												target='_blank'
+												href='https://demo.fivem.design/?demo=store'
+												style={{
+													fontWeight: '700',
+													backgroundColor:
+														'rgb(38, 40, 43)',
+													borderColor:
+														'rgb(38, 40, 43)',
+													width: '200px',
+													marginLeft: '25px',
 												}}
 											>
 												Demo Theme

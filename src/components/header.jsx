@@ -48,10 +48,10 @@ export const Header = () => {
 							backgroundColor: ButtonHex,
 							borderColor: ButtonHex,
 						}}
-						href='/templates'
+						href={'http://demo.fivem.design'}
 						size='lg'
 					>
-						<i className='fas fa-globe'></i> View Templates
+						<i className='fas fa-globe'></i> Demo Themes
 					</Button>
 
 					<Button
@@ -78,10 +78,23 @@ export const Header = () => {
 						backgroundColor: ButtonHex,
 						borderColor: ButtonHex,
 					}}
-					href={'http://demo.fivem.design'}
+					href='/templates'
 					size='lg'
 				>
-					Demo Themes
+					Site Templates
+				</Button>
+
+				<Button
+					style={{
+						fontWeight: '700',
+						margin: '5px',
+						backgroundColor: ButtonHex,
+						borderColor: ButtonHex,
+					}}
+					href='/hosting'
+					size='lg'
+				>
+					Hosting Options
 				</Button>
 			</div>
 		</div>

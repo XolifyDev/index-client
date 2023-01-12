@@ -51,20 +51,35 @@ export const TemplateCard = ({ template }) => (
 					target='_blank'
 					href={template.demo}
 				>
-					<i className='far fa-eye'></i> Demo Theme
+					<i className='far fa-eye'></i> View More
 				</Button>
-				<Button
-					style={{
-						width: '100%',
-						fontWeight: '700',
-						fontSize: '20px',
-						marginTop: '15px',
-						backgroundColor: ButtonHex,
-						borderColor: ButtonHex,
-					}}
-				>
-					<i className='fas fa-shopping-cart'></i> Purchase Theme
-				</Button>
+				{template.trial ? (
+					<Button
+						style={{
+							width: '100%',
+							fontWeight: '700',
+							fontSize: '20px',
+							marginTop: '15px',
+							backgroundColor: ButtonHex,
+							borderColor: ButtonHex,
+						}}
+					>
+						Start Free Trial
+					</Button>
+				) : (
+					<Button
+						style={{
+							width: '100%',
+							fontWeight: '700',
+							fontSize: '20px',
+							marginTop: '15px',
+							backgroundColor: ButtonHex,
+							borderColor: ButtonHex,
+						}}
+					>
+						<i className='fas fa-shopping-cart'></i> Add to Cart
+					</Button>
+				)}
 			</div>
 		</Card.Body>
 	</Card>

@@ -152,53 +152,55 @@ const TierCard = ({ name, price, features }) => (
 export const HostingPage = () => {
 	return (
 		<PageLayout container>
-			<Container style={{ paddingTop: '120px' }}>
-				<div className='container' style={{ textAlign: 'center' }}>
-					<h1 className='h3' style={{ paddingBottom: '10px' }}>
-						Hosting Plans
-					</h1>
+			<div style={{ minHeight: '80vh' }}>
+				<Container style={{ paddingTop: '120px' }}>
+					<div className='container' style={{ textAlign: 'center' }}>
+						<h1 className='h3' style={{ paddingBottom: '10px' }}>
+							Hosting Plans
+						</h1>
 
-					<div className='row' style={{ paddingBottom: '15px' }}>
-						<div className='col-md-2'></div>
-						<div className='col-md-8'>
-							<hr />
-						</div>
-					</div>
-
-					<div style={{ paddingBottom: '65px' }}>
-						<div className='row'>
+						<div className='row' style={{ paddingBottom: '15px' }}>
 							<div className='col-md-2'></div>
-							<div className='col-md-4'>
-								<TierCard
-									name='Upgraded Hosting'
-									price='$10 Per Month'
-									features={[
-										{
-											name: 'Custom Domains',
-											enabled: true,
-										},
-										{
-											name: 'Discord Integration',
-											enabled: true,
-										},
-									]}
-								/>
+							<div className='col-md-8'>
+								<hr />
 							</div>
-							<div className='col-md-4'>
-								<TierCard
-									name='Free Hosting'
-									features={[
-										{
-											name: 'Custom Domains',
-											enabled: false,
-										},
-									]}
-								/>
+						</div>
+
+						<div style={{ paddingBottom: '65px' }}>
+							<div className='row'>
+								<div className='col-md-2'></div>
+								<div className='col-md-4'>
+									<TierCard
+										name='Upgraded Hosting'
+										price='$10 Per Month'
+										features={[
+											{
+												name: 'Custom Domains',
+												enabled: true,
+											},
+											{
+												name: 'Discord Integration',
+												enabled: true,
+											},
+										]}
+									/>
+								</div>
+								<div className='col-md-4'>
+									<TierCard
+										name='Free Hosting'
+										features={[
+											{
+												name: 'Custom Domains',
+												enabled: false,
+											},
+										]}
+									/>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-			</Container>
+				</Container>
+			</div>
 		</PageLayout>
 	);
 };

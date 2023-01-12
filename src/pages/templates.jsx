@@ -5,25 +5,27 @@ import { Templates } from '../components/templates';
 export const TemplatesPage = () => {
 	return (
 		<PageLayout container>
-			<Container style={{ paddingTop: '80px' }}>
-				<div className='container'>
-					<h1 className='h3' style={{ paddingBottom: '20px' }}>
-						Templates
-					</h1>
+			<div style={{ minHeight: '80vh' }}>
+				<Container style={{ paddingTop: '80px' }}>
+					<div className='container'>
+						<h1 className='h3' style={{ paddingBottom: '20px' }}>
+							Templates
+						</h1>
 
-					<hr />
+						<hr />
 
-					<div
-						style={{
-							height: '65vh',
-							overflowY: 'auto',
-							overflowX: 'hidden',
-						}}
-					>
-						<Templates />
+						<div
+							style={{
+								height: '65vh',
+								overflowY: 'auto',
+								overflowX: 'hidden',
+							}}
+						>
+							<Templates />
+						</div>
 					</div>
-				</div>
-			</Container>
+				</Container>
+			</div>
 		</PageLayout>
 	);
 };

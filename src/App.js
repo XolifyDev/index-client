@@ -16,6 +16,8 @@ import {
 	DevelopersPage,
 	PortalsPage,
 	ProxyPage,
+	CheckoutPage,
+	UserCartPage,
 } from './pages';
 
 const App = () => {
@@ -62,6 +64,20 @@ const App = () => {
 				<Route path='/sites' exact component={UserSitesPage} />
 
 				<Route path='/account' exact component={AccountPage} />
+
+				<Route path='/checkout' exact component={CheckoutPage} />
+
+				<Route path='/cart' exact component={UserCartPage} />
+
+				<Route
+					exact
+					path='/redirect'
+					component={() => {
+						login();
+
+						return '';
+					}}
+				/>
 
 				<Route
 					exact
