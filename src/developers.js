@@ -37,4 +37,9 @@ export const Developers = [
 		src: 'https://paradisemods.fivem.design/',
 		logo: ParadiseModifications,
 	},
+	{
+		name: `Carson's Development`,
+		src: 'https://carsons-development.xyz/',
+		logo: 'https://res.cloudinary.com/dj4naq0tj/image/upload/v1673484840/b1x0ni63v5fzbqkqahye.png',
+	},
 ];
