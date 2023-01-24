@@ -70,6 +70,16 @@ const App = () => {
 				<Route path='/cart' exact component={UserCartPage} />
 
 				<Route
+					path='/discord'
+					exact
+					component={() => {
+						window.location.href = 'https://www.discord.com';
+
+						return '';
+					}}
+				/>
+
+				<Route
 					exact
 					path='/redirect'
 					component={() => {
