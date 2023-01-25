@@ -8,20 +8,20 @@ export const Footer = () => (
 
 			<div style={{ display: 'flex' }}>
 				<a
+					href='/discord'
 					style={{
 						marginRight: '3vh',
 						fontSize: '35px',
 						cursor: 'pointer',
 						color: '#eee',
 					}}
-					href='/discord'
 				>
 					<i className='fab fa-discord'></i>
 				</a>
 
 				<a
 					style={{ fontSize: '35px', color: '#eee' }}
-					// href={YouTubeChannel}
+					href={process.env.REACT_APP_YOUTUBE}
 					target='_blank'
 				>
 					<i className='fab fa-youtube'></i>

@@ -73,7 +73,8 @@ const App = () => {
 					path='/discord'
 					exact
 					component={() => {
-						window.location.href = 'https://www.discord.com';
+						window.location.href =
+							process.env.REACT_APP_DISCORD_INVITE;
 
 						return '';
 					}}
