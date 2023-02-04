@@ -5,8 +5,9 @@ import StoreProductsIMG from './assets/store/preview_products.png';
 
 const Templates = [
 	{
+		id: 'store',
 		name: 'Adrens Store',
-		price: '$10.00',
+		price: '10',
 		demo: 'https://demo.fivem.design?demo=store',
 		template: StorePNG,
 		trial: true,
@@ -20,8 +21,9 @@ const Templates = [
 		],
 	},
 	{
+		id: 'linktree',
 		name: 'Link Tree',
-		price: 'FREE',
+		price: '0',
 		template: 'https://i.imgur.com/iAuXP2x.png',
 		demo: 'https://demo.fivem.design?demo=linktree',
 	},

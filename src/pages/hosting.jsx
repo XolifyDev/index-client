@@ -1,8 +1,11 @@
 import { Container, Card, Button } from 'react-bootstrap';
 import { PageLayout } from '../layouts/page';
 import { Templates } from '../components/templates';
+import { TrialBadge } from '../components/trialBadge';
+import { UpgradeModal } from '../components/upgradeModal';
+import { useState } from 'react';
 
-const TierCard = ({ name, price, features }) => (
+const TierCard = ({ name, price, features, setShowUpgradeModal }) => (
 	<Card
 		bg='secondary'
 		text='light'
@@ -132,6 +135,7 @@ const TierCard = ({ name, price, features }) => (
 					<div>
 						<div style={{ width: '85%', margin: 'auto' }}>
 							<Button
+								onClick={() => setShowUpgradeModal(true)}
 								style={{
 									width: '100%',
 									fontWeight: '700',
@@ -150,10 +154,19 @@ const TierCard = ({ name, price, features }) => (
 );
 
 export const HostingPage = () => {
+	const [ShowUpgradeModal, setShowUpgradeModal] = useState(false);
+
 	return (
 		<PageLayout container>
-			<div style={{ minHeight: '80vh' }}>
-				<Container style={{ paddingTop: '120px' }}>
+			<UpgradeModal
+				show={ShowUpgradeModal}
+				setShow={setShowUpgradeModal}
+			/>
+
+			<div style={{ minHeight: '75vh' }}>
+				<Container style={{ paddingTop: '80px' }}>
+					<TrialBadge />
+
 					<div className='container' style={{ textAlign: 'center' }}>
 						<h1 className='h3' style={{ paddingBottom: '10px' }}>
 							Hosting Plans
@@ -166,11 +179,14 @@ export const HostingPage = () => {
 							</div>
 						</div>
 
-						<div style={{ paddingBottom: '65px' }}>
+						<div style={{ paddingBottom: '20px' }}>
 							<div className='row'>
 								<div className='col-md-2'></div>
 								<div className='col-md-4'>
 									<TierCard
+										setShowUpgradeModal={
+											setShowUpgradeModal
+										}
 										name='Upgraded Hosting'
 										price='$10 Per Month'
 										features={[
@@ -182,13 +198,24 @@ export const HostingPage = () => {
 												name: 'Discord Integration',
 												enabled: true,
 											},
+											{
+												name: 'Advanced Analytics',
+												enabled: true,
+											},
 										]}
 									/>
 								</div>
 								<div className='col-md-4'>
 									<TierCard
+										setShowUpgradeModal={
+											setShowUpgradeModal
+										}
 										name='Free Hosting'
 										features={[
+											{
+												name: 'Discord Integration',
+												enabled: true,
+											},
 											{
 												name: 'Custom Domains',
 												enabled: false,

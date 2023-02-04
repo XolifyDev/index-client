@@ -18,6 +18,7 @@ import {
 	ProxyPage,
 	CheckoutPage,
 	UserCartPage,
+	UpgradesPage,
 } from './pages';
 
 const App = () => {
@@ -68,6 +69,8 @@ const App = () => {
 				<Route path='/checkout' exact component={CheckoutPage} />
 
 				<Route path='/cart' exact component={UserCartPage} />
+
+				<Route path='/upgrades' exact component={UpgradesPage} />
 
 				<Route
 					path='/discord'

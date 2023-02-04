@@ -214,6 +214,18 @@ export const Nav = ({ containerized }) => {
 								Hosting
 							</a>
 
+							{/* <a
+								href='/upgrades'
+								style={{
+									fontWeight: '700',
+									textDecoration: 'none',
+									color: '#eee',
+									marginLeft: '20px',
+								}}
+							>
+								Upgrades
+							</a> */}
+
 							<a
 								href='/discord'
 								target='_blank'

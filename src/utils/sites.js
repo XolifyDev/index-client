@@ -7,3 +7,7 @@ export function fetchSites() {
 export function createSite(body) {
 	return API.post('/sites/create', body);
 }
+
+export function fetchDevelopers() {
+	return API.get('/developers');
+}

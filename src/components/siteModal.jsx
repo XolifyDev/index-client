@@ -1,12 +1,17 @@
 import { useState, useEffect } from 'react';
 import { Modal, Button, InputGroup, Form, Card, Nav } from 'react-bootstrap';
 import { UserTemplatesModal } from './templatesModal';
-import { createSite } from '../utils';
+import { createSite as createInstance, silentUpdate } from '../utils';
 
-export const SiteModal = ({ show, setShow, creatingSite, site }) => {
-	const [ShowTemplatesModal, setShowTemplatesModal] = useState(false);
-
-	const [SelectedTheme, setSelectedTheme] = useState(null);
+export const CreateSiteModal = ({
+	show,
+	setShow,
+	template,
+	creatingSite,
+	resetData,
+	site,
+}) => {
+	const [SelectedTheme, setSelectedTheme] = template;
 
 	const [Domain, setDomain] = useState('');
 
@@ -14,16 +19,22 @@ export const SiteModal = ({ show, setShow, creatingSite, site }) => {
 
 	const [Data, setData] = useState(null);
 
-	const create = () =>
-		createSite({
-			themeId: 'store',
+	const handleClose = () => {
+		silentUpdate('/sites');
+		setSelectedTheme(null);
+		setShow(false);
+	};
+
+	const createSite = () =>
+		createInstance({
+			themeId: SelectedTheme,
 			hostingId: '12312',
 			domain: `${Domain}.fivem.design`,
 		}).then(({ data }) => {
 			if (data.error) alert(data.error);
 
 			handleClose();
-			// resetData();
+			resetData();
 		});
 
 	useEffect(() => {
@@ -32,225 +43,194 @@ export const SiteModal = ({ show, setShow, creatingSite, site }) => {
 		setData(site);
 	}, [creatingSite, site]);
 
-	const handleClose = () => setShow(false);
+	return !SelectedTheme ? (
+		<UserTemplatesModal
+			show={show}
+			setShow={setShow}
+			theme={[SelectedTheme, setSelectedTheme]}
+		/>
+	) : (
+		<Modal
+			size={!creatingSite ? 'xl' : 'lg'}
+			show={show}
+			onHide={handleClose}
+			style={
+				creatingSite
+					? { marginTop: '10vh', color: 'black' }
+					: { marginTop: '5vh', color: 'black' }
+			}
+		>
+			<Modal.Header closeButton>
+				<Modal.Title>
+					{creatingSite ? 'Create New Site' : 'Edit Site'}
+				</Modal.Title>
+			</Modal.Header>
+			{creatingSite ? (
+				<Modal.Body style={{ textAlign: 'center' }}>
+					<div
+						style={{
+							width: '80%',
+							margin: 'auto',
+							padding: '15px',
+						}}
+					>
+						<p
+							style={{
+								fontSize: '22px',
+								paddingBottom: '15px',
+							}}
+						>
+							To begin creating a site, please register the
+							domain.
+						</p>
 
-	const chooseTheme = () => {
-		setShow(false);
-		setShowTemplatesModal(true);
-	};
+						<InputGroup
+							className='mb-2'
+							style={{
+								width: '100%',
+								marginTop: '15px',
+							}}
+						>
+							<InputGroup.Text>https://</InputGroup.Text>
+							<Form.Control
+								id='inlineFormInputGroup'
+								placeholder='greater-rp'
+								// value={creatingSite ? Domain : Data.src}
+								onChange={(e) => setDomain(e.target.value)}
+							/>
+							<InputGroup.Text>fivem.design</InputGroup.Text>
+						</InputGroup>
 
-	return (
-		<>
-			<UserTemplatesModal
-				theme={[SelectedTheme, setSelectedTheme]}
-				show={ShowTemplatesModal}
-				setShow={setShowTemplatesModal}
-				handleClose={() => {
-					setShow(true);
-					setShowTemplatesModal(false);
-				}}
-			/>
+						<p
+							style={{
+								paddingTop: '20px',
+								fontSize: '22px',
+								fontWeight: '600',
+								fontStyle: 'italic',
+								color: 'green',
+							}}
+						>
+							<i className='fas fa-check'></i> Domain Available
+						</p>
+					</div>
+				</Modal.Body>
+			) : (
+				<Modal.Body style={{ minHeight: '45vh' }}>
+					<Nav fill variant='tabs'>
+						<Nav.Item onClick={() => setPage('site')}>
+							<Nav.Link active={Page == 'site'}>
+								Site Details
+							</Nav.Link>
+						</Nav.Item>
+						<Nav.Item onClick={() => setPage('hosting')}>
+							<Nav.Link active={Page == 'hosting'}>
+								Hosting Details
+							</Nav.Link>
+						</Nav.Item>
+					</Nav>
 
-			{show && (!creatingSite ? (Data ? true : false) : true) && (
-				<Modal
-					size={!creatingSite ? 'xl' : 'lg'}
-					show={show}
-					onHide={handleClose}
-					style={
-						creatingSite
-							? { marginTop: '10vh', color: 'black' }
-							: { marginTop: '5vh', color: 'black' }
-					}
-				>
-					<Modal.Header closeButton>
-						<Modal.Title>
-							{creatingSite ? 'Create New Site' : 'Edit Site'}
-						</Modal.Title>
-					</Modal.Header>
-					{creatingSite ? (
-						<Modal.Body style={{ textAlign: 'center' }}>
-							<div
+					{Page == 'site' ? (
+						<div style={{ paddingTop: '15px' }}>
+							<Card
+								body
 								style={{
-									width: '80%',
-									margin: 'auto',
-									padding: '15px',
+									marginBottom: '20px',
 								}}
 							>
-								<p
-									style={{
-										fontSize: '22px',
-										paddingBottom: '15px',
-									}}
-								>
-									To begin creating a site, please register
-									the domain.
-								</p>
+								<div>
+									<Card.Title>Site Details</Card.Title>
 
-								<InputGroup
-									className='mb-2'
-									style={{
-										width: '100%',
-										marginTop: '15px',
-									}}
-								>
-									<InputGroup.Text>https://</InputGroup.Text>
-									<Form.Control
-										id='inlineFormInputGroup'
-										placeholder='greater-rp'
-										value={creatingSite ? Domain : Data.src}
-										onChange={(e) =>
-											setDomain(e.target.value)
-										}
-									/>
-									<InputGroup.Text>
-										fivem.design
-									</InputGroup.Text>
-								</InputGroup>
+									<div>
+										<div
+											className='row'
+											style={{
+												marginTop: '20px',
+											}}
+										>
+											<div className='col-md-6'>
+												<Form.Group>
+													<Form.Label>
+														Site Name
+													</Form.Label>
 
-								<p
-									style={{
-										paddingTop: '20px',
-										fontSize: '22px',
-										fontWeight: '600',
-										fontStyle: 'italic',
-										color: 'green',
-									}}
-								>
-									<i className='fas fa-check'></i> Domain
-									Available
-								</p>
-							</div>
-						</Modal.Body>
-					) : (
-						<Modal.Body style={{ minHeight: '45vh' }}>
-							<Nav fill variant='tabs'>
-								<Nav.Item onClick={() => setPage('site')}>
-									<Nav.Link active={Page == 'site'}>
-										Site Details
-									</Nav.Link>
-								</Nav.Item>
-								<Nav.Item onClick={() => setPage('hosting')}>
-									<Nav.Link active={Page == 'hosting'}>
-										Hosting Details
-									</Nav.Link>
-								</Nav.Item>
-							</Nav>
-
-							{Page == 'site' ? (
-								<div style={{ paddingTop: '15px' }}>
-									<Card
-										body
-										style={{
-											marginBottom: '20px',
-										}}
-									>
-										<div>
-											<Card.Title>
-												Site Details
-											</Card.Title>
-
-											<div>
-												<div
-													className='row'
-													style={{
-														marginTop: '20px',
-													}}
-												>
-													<div className='col-md-6'>
-														<Form.Group>
-															<Form.Label>
-																Site Name
-															</Form.Label>
-
-															<Form.Control
-																type='text'
-																style={{
-																	marginTop:
-																		'5px',
-																}}
-															/>
-														</Form.Group>
-													</div>
-													<div className='col-md-6'>
-														<Form.Group>
-															<Form.Label>
-																Domain
-															</Form.Label>
-
-															<InputGroup
-																className='mb-2'
-																style={{
-																	width: '100%',
-																	marginTop:
-																		'5px',
-																}}
-															>
-																<InputGroup.Text>
-																	https://
-																</InputGroup.Text>
-																<Form.Control
-																	id='inlineFormInputGroup'
-																	placeholder='greater-rp'
-																	value={
-																		creatingSite
-																			? Domain
-																			: Data.src
-																	}
-																	onChange={(
-																		e
-																	) =>
-																		setDomain(
-																			e
-																				.target
-																				.value
-																		)
-																	}
-																/>
-																<InputGroup.Text>
-																	fivem.design
-																</InputGroup.Text>
-															</InputGroup>
-														</Form.Group>
-													</div>
-
-													<div
-														className='col-md-6'
+													<Form.Control
+														type='text'
 														style={{
-															paddingTop: '5px',
-															paddingBottom:
-																'10px',
+															marginTop: '5px',
+														}}
+													/>
+												</Form.Group>
+											</div>
+											<div className='col-md-6'>
+												<Form.Group>
+													<Form.Label>
+														Domain
+													</Form.Label>
+
+													<InputGroup
+														className='mb-2'
+														style={{
+															width: '100%',
+															marginTop: '5px',
 														}}
 													>
-														<Form.Group>
-															<Form.Label>
-																Site Template
-															</Form.Label>
+														<InputGroup.Text>
+															https://
+														</InputGroup.Text>
+														<Form.Control
+															id='inlineFormInputGroup'
+															placeholder='greater-rp'
+															// value={
+															// 	creatingSite
+															// 		? Domain
+															// 		: Data.src
+															// }
+															onChange={(e) =>
+																setDomain(
+																	e.target
+																		.value
+																)
+															}
+														/>
+														<InputGroup.Text>
+															fivem.design
+														</InputGroup.Text>
+													</InputGroup>
+												</Form.Group>
+											</div>
 
-															<div
-																style={{
-																	marginTop:
-																		'5px',
-																}}
-															>
-																<Button
-																	variant='secondary'
-																	onClick={
-																		chooseTheme
-																	}
-																	style={{
-																		width: '100%',
-																		fontWeight:
-																			'700',
-																	}}
-																>
-																	Select
-																	Template
-																</Button>
-															</div>
-														</Form.Group>
+											<div
+												className='col-md-6'
+												style={{
+													paddingTop: '5px',
+													paddingBottom: '10px',
+												}}
+											>
+												<Form.Group>
+													<Form.Label>
+														Site Template
+													</Form.Label>
+
+													<div
+														style={{
+															marginTop: '5px',
+														}}
+													>
+														<Button
+															variant='secondary'
+															style={{
+																width: '100%',
+																fontWeight:
+																	'700',
+															}}
+														>
+															Select Template
+														</Button>
 													</div>
+												</Form.Group>
+											</div>
 
-													{/* <div className='col-md-10'>
+											{/* <div className='col-md-10'>
 												<Form.Group
 													style={{
 														width: '100%',
@@ -300,9 +280,9 @@ export const SiteModal = ({ show, setShow, creatingSite, site }) => {
 													Set Domain
 												</Button>
 											</div> */}
-												</div>
+										</div>
 
-												{/* <div
+										{/* <div
 											className='row'
 											style={{ marginTop: '20px' }}
 										>
@@ -354,40 +334,34 @@ export const SiteModal = ({ show, setShow, creatingSite, site }) => {
 												</Button>
 											</div>
 										</div> */}
-											</div>
-										</div>
-									</Card>
+									</div>
 								</div>
-							) : Page == 'hosting' ? (
-								<div style={{ paddingTop: '15px' }}></div>
-							) : null}
-						</Modal.Body>
-					)}
-					<Modal.Footer>
-						<Button
-							variant='secondary'
-							onClick={handleClose}
-							style={{ fontWeight: '700' }}
-						>
-							Close
-						</Button>
-						<Button
-							onClick={create}
-							style={{
-								fontWeight: '700',
-								backgroundColor: 'rgb(255, 98, 0)',
-								borderColor: 'rgb(255, 98, 0)',
-							}}
-						>
-							{creatingSite ? 'Create Site' : 'Edit Site'}
-						</Button>
-					</Modal.Footer>
-				</Modal>
+							</Card>
+						</div>
+					) : Page == 'hosting' ? (
+						<div style={{ paddingTop: '15px' }}></div>
+					) : null}
+				</Modal.Body>
 			)}
-		</>
+			<Modal.Footer>
+				<Button
+					variant='secondary'
+					onClick={handleClose}
+					style={{ fontWeight: '700' }}
+				>
+					Close
+				</Button>
+				<Button
+					onClick={createSite}
+					style={{
+						fontWeight: '700',
+						backgroundColor: 'rgb(255, 98, 0)',
+						borderColor: 'rgb(255, 98, 0)',
+					}}
+				>
+					{creatingSite ? 'Create Site' : 'Edit Site'}
+				</Button>
+			</Modal.Footer>
+		</Modal>
 	);
 };
-
-export const CreateSiteModal = (params) => (
-	<SiteModal {...params} creatingSite />
-);

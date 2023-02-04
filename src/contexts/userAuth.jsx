@@ -10,6 +10,10 @@ export const UserAuthContextProvider = ({ children }) => {
 
 	const [token, setToken] = useState(null);
 
+	const [upgrades, setUpgrades] = useState([]);
+
+	const [trial, setTrial] = useState(null);
+
 	const [finishedLoading, setfinishedLoading] = useState(false);
 
 	const login = () => (window.location.href = `${API_URL}/auth/login`);
@@ -30,6 +34,10 @@ export const UserAuthContextProvider = ({ children }) => {
 			if (data.error) return;
 
 			setUser(data.user);
+
+			setUpgrades(data.upgrades);
+
+			if (data.trial) setTrial(data.trial);
 
 			setfinishedLoading(true);
 		});
@@ -56,7 +64,15 @@ export const UserAuthContextProvider = ({ children }) => {
 	useEffect(fetchToken, []);
 
 	return (
-		<UserAuthContext.Provider value={{ user, login, setUserToken, logout }}>
+		<UserAuthContext.Provider
+			value={{
+				user,
+				login,
+				setUserToken,
+				logout,
+				trial,
+			}}
+		>
 			{true ? (
 				children
 			) : (

@@ -1,17 +1,17 @@
 import { useState } from 'react';
 import { Card, Placeholder, Button } from 'react-bootstrap';
-import { SiteModal } from './siteModal';
+// import { SiteModal } from './siteModal';
 
 export const SiteCard = ({ loading, site }) => {
 	const [ShowSettingsModal, setShowSettingsModal] = useState(false);
 
 	return (
 		<>
-			<SiteModal
+			{/* <SiteModal
 				show={ShowSettingsModal}
 				setShow={setShowSettingsModal}
 				site={site}
-			/>
+			/> */}
 
 			<Card
 				bg='secondary'
@@ -29,7 +29,9 @@ export const SiteCard = ({ loading, site }) => {
 				>
 					{!loading ? (
 						<>
-							<Card.Img src='http://localhost:3000/static/media/store.8fb304ef7e5292e733f9.png' />
+							<a href={`https://${site.src}`} target='_blank'>
+								<Card.Img src='http://localhost:3000/static/media/preview_landing.00ff06d8934c0bd7d234.png' />
+							</a>
 
 							<Card.Title style={{ paddingTop: '15px' }}>
 								{site.src}
@@ -50,7 +52,35 @@ export const SiteCard = ({ loading, site }) => {
 								</span>
 							</p>
 
+							<p
+								style={{
+									margin: '0',
+									padding: '0',
+									paddingTop: '5px',
+									fontWeight: '700',
+									fontSize: '18px',
+								}}
+							>
+								Hosting:{' '}
+								<span style={{ fontWeight: '600' }}>
+									Upgraded Hosting
+								</span>
+							</p>
+
 							<hr />
+
+							<Button
+								// disabled={!site.active}
+								onClick={() => setShowSettingsModal(true)}
+								style={{
+									fontWeight: '700',
+									backgroundColor: 'rgb(63, 65, 66)',
+									borderColor: 'rgb(63, 65, 66)',
+									width: '100%',
+								}}
+							>
+								<i className='fas fa-cog'></i> Modify Site
+							</Button>
 
 							<Button
 								target='_blank'
@@ -61,23 +91,10 @@ export const SiteCard = ({ loading, site }) => {
 									backgroundColor: 'rgb(255, 98, 0)',
 									borderColor: 'rgb(255, 98, 0)',
 									width: '100%',
-								}}
-							>
-								<i className='fas fa-globe'></i> Visit Site
-							</Button>
-
-							<Button
-								disabled={!site.active}
-								onClick={() => setShowSettingsModal(true)}
-								style={{
-									fontWeight: '700',
-									backgroundColor: 'rgb(63, 65, 66)',
-									borderColor: 'rgb(63, 65, 66)',
-									width: '100%',
 									marginTop: '15px',
 								}}
 							>
-								<i className='fas fa-cog'></i> Modify Site
+								<i className='fas fa-globe'></i> Visit Site
 							</Button>
 						</>
 					) : (

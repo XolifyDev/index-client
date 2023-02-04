@@ -10,3 +10,4 @@ export * from './proxy';
 export * from './404';
 export * from './checkout';
 export * from './cart';
+export * from './upgrades';

@@ -14,7 +14,7 @@ export const AccountPage = () => {
 	return (
 		user && (
 			<PageLayout container>
-				<div style={{ minHeight: '80vh' }}>
+				<div style={{ minHeight: '75vh' }}>
 					<Container style={{ paddingTop: '80px' }}>
 						<div
 							className='container'
@@ -146,7 +146,7 @@ export const AccountPage = () => {
 							</div>
 
 							<div className='row' style={{ paddingTop: '30px' }}>
-								<div className='col-md-6'>
+								<div className='col-md-12'>
 									<div>
 										<h1 className='h4'>Subscriptions</h1>
 
@@ -223,7 +223,8 @@ export const AccountPage = () => {
 										</Card>
 									</div>
 								</div>
-								<div className='col-md-6'>
+
+								{/* <div className='col-md-6'>
 									<div>
 										<h1 className='h4'>Purchased Assets</h1>
 
@@ -299,7 +300,7 @@ export const AccountPage = () => {
 											</Card>
 										</Card>
 									</div>
-								</div>
+								</div> */}
 							</div>
 						</div>
 					</Container>

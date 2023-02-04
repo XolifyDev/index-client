@@ -8,7 +8,7 @@ export const PageLayout = ({ children, page, container }) => {
 				style={{
 					position: !container ? 'fixed' : null,
 					width: '100%',
-					zIndex: '100',
+					zIndex: '900',
 				}}
 			>
 				<div className={container ? 'container' : null}>

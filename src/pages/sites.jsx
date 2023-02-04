@@ -3,7 +3,7 @@ import { Container, Button } from 'react-bootstrap';
 import { PageLayout } from '../layouts/page';
 import { SiteCard } from '../components/siteCard';
 import { CreateSiteModal } from '../components/siteModal';
-import { fetchSites } from '../utils';
+import { fetchSites, silentUpdate, useQuery } from '../utils';
 
 export const UserSitesPage = () => {
 	const [FetchingSites, setFetchingSites] = useState(true);
@@ -11,6 +11,10 @@ export const UserSitesPage = () => {
 	const [UserSites, setUserSites] = useState([]);
 
 	const [ShowCreateModal, setShowCreateModal] = useState(false);
+
+	const [Template, setTemplate] = useState(null);
+
+	const query = useQuery();
 
 	const resetData = () => {
 		setFetchingSites(true);
@@ -21,26 +25,33 @@ export const UserSitesPage = () => {
 			setUserSites(data.sites);
 
 			setFetchingSites(false);
-
-			let needsRefresh = false;
-
-			data.sites.forEach((site) => {
-				if (!site.active) needsRefresh = true;
-			});
-
-			if (needsRefresh) setTimeout(resetData, 4500);
 		});
 	};
 
 	useEffect(resetData, []);
 
+	useEffect(() => {
+		const creating = query.get('creatingSite');
+
+		const template = query.get('template');
+
+		console.log(creating);
+
+		if (creating) setShowCreateModal(true);
+
+		if (template) setTemplate(template);
+	}, []);
+
 	return (
 		<PageLayout container>
-			<CreateSiteModal
-				show={ShowCreateModal}
-				setShow={setShowCreateModal}
-				resetData={resetData}
-			/>
+			{ShowCreateModal && (
+				<CreateSiteModal
+					show={ShowCreateModal}
+					setShow={setShowCreateModal}
+					template={[Template, setTemplate]}
+					resetData={resetData}
+				/>
+			)}
 
 			<div style={{ minHeight: '80vh' }}>
 				<Container style={{ paddingTop: '80px' }}>
@@ -79,6 +90,9 @@ export const UserSitesPage = () => {
 									}}
 									onClick={() => {
 										setShowCreateModal(true);
+										silentUpdate(
+											'/sites?creatingSite=true'
+										);
 									}}
 								>
 									<i className='fas fa-plus'></i> Create New
