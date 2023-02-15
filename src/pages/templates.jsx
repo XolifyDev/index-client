@@ -94,6 +94,23 @@ const TemplateInfoModal = ({ show, setShow, template }) => {
 							>
 								<hr />
 
+								{SelectedTemplate.demo && (
+									<Button
+										size='lg'
+										target='_blank'
+										variant='secondary'
+										href={SelectedTemplate.demo}
+										style={{
+											width: '100%',
+											fontWeight: '700',
+											marginBottom: '15px',
+										}}
+									>
+										<i className='fas fa-desktop'></i>{' '}
+										Template Demo
+									</Button>
+								)}
+
 								<Button
 									size='lg'
 									style={{

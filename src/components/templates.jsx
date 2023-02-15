@@ -26,7 +26,7 @@ export const TemplateCard = ({ template, viewTemplate }) => {
 				}}
 			>
 				<Card.Img
-					src={templates[0].template}
+					src={template.template}
 					onClick={viewTemplate}
 					style={{
 						width: '100%',

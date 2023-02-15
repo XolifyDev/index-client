@@ -97,9 +97,9 @@ export const LandingPage = () => {
 								<Carousel style={{ marginRight: '25px' }}>
 									{[
 										{
-											src: Templates[0].template,
+											src: Templates[1].template,
 										},
-										...Templates[0].previewImgs,
+										...Templates[1].previewImgs,
 									].map((img) => {
 										return (
 											<Carousel.Item>
