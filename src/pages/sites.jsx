@@ -50,6 +50,7 @@ export const UserSitesPage = () => {
 					setShow={setShowCreateModal}
 					template={[Template, setTemplate]}
 					resetData={resetData}
+					creatingSite={true}
 				/>
 			)}
 
